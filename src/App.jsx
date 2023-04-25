@@ -6,17 +6,17 @@ import SearchButton from "./components/searchButton/SearchButton";
 function App() {
   const [date, handleDateChange] = useState(new Date());
 
-  const [tabel, handleNewTabel] = useState({});
+  const [tabel, setTabel] = useState({});
 
   function requestDepartures() {
     fetch(
-      "https://jsonplaceholder.typicode.com/hai-la-mare/db.json/gherla-cluj-lv"
+      "https://raw.githubusercontent.com/StefanFaceCod2903/hai-la-mare/main/db.json"
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        tabel(data);
+        setTabel(data);
         console.log(data);
       });
   }
