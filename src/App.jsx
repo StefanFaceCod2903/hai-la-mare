@@ -6,6 +6,20 @@ import SearchButton from "./components/searchButton/SearchButton";
 function App() {
   const [date, handleDateChange] = useState(new Date());
 
+  const [tabel, handleNewTabel] = useState({});
+
+  function requestDepartures() {
+    fetch(
+      "https://jsonplaceholder.typicode.com/hai-la-mare/db.json/gherla-cluj-lv"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        tabel(data);
+        console.log(data);
+      });
+  }
   return (
     <>
       <form>
@@ -20,7 +34,7 @@ function App() {
             <CalendarInput date={date} handleDateChange={handleDateChange} />
           </div>
         </div>
-        <SearchButton />
+        <SearchButton onClick={requestDepartures} />
       </form>
     </>
   );
